@@ -1,14 +1,20 @@
 const graphql = require('graphql');
-const {getUserById, getCompanyById} = require('../db/db_connection');
-const {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema} = graphql;
+const {getUserById, getCompanyById, getAllUsersOfCompany} = require('../db/db_connection');
+const {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList} = graphql;
 
 const CompanyType  = new GraphQLObjectType({
   name: 'Company',
-  fields: {
+  fields: () => ({
     id: {type: GraphQLString},
     name: {type: GraphQLString},
-    description: {type: GraphQLString}
-  }
+    description: {type: GraphQLString},
+    users: {
+      type: new GraphQLList(UserType),
+      resolve(parentValue, args){
+        return getAllUsersOfCompany(parentValue.id);
+      }
+    }
+  })
 });
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -18,8 +24,8 @@ const UserType = new GraphQLObjectType({
     age: {type: GraphQLInt},
     company: {
       type: CompanyType,
-      resolve(parentValuem, args){
-        return getCompanyById(parentValuem.companyId);
+      resolve(parentValue, args){
+        return getCompanyById(parentValue.companyId);
       }
     }
   }
@@ -31,8 +37,15 @@ const RootQuery = new GraphQLObjectType({
       user: {
         type: UserType,
         args: { id: {type: GraphQLString} },
-        resolve(parentValuem, args){
+        resolve(parentValue, args){
             return getUserById(args.id);
+        }
+      },
+      company: {
+        type: CompanyType,
+        args: { id: {type: GraphQLString} },
+        resolve(parentValue, args){
+            return getCompanyById(args.id);
         }
       }
     }
