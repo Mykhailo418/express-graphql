@@ -23,7 +23,15 @@ module.exports.getAllUsersOfCompany = function(companyId){
 
 module.exports.addUser = function(user){
 	const users = db.get('users');
-	return users.find({}, {}).then((data) => {
-		return users.insert({id: (data.length + 1).toString(), ...user});
-	});
+	return users.insert({id: Date.now().toString(), ...user});
+}
+
+module.exports.deleteUser = function(id){
+	let users = db.get('users');
+	return users.remove({id}, {multi: false});
+}
+
+module.exports.updateUser = function(user){
+	let users = db.get('users');
+	return users.update({id: user.id}, {$set: user});
 }

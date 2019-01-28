@@ -1,5 +1,5 @@
 const graphql = require('graphql');
-const {getUserById, getCompanyById, getAllUsersOfCompany, addUser} = require('../db/db_connection');
+const {getUserById, getCompanyById, getAllUsersOfCompany, addUser, deleteUser, updateUser} = require('../db/db_connection');
 const {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLNonNull} = graphql;
 
 const CompanyType  = new GraphQLObjectType({
@@ -63,6 +63,27 @@ const mutation  = new GraphQLObjectType({
         },
         resolve(parentValue, {firstName, age, companyId}){
           return addUser({firstName, age, companyId});
+        }
+      },
+      deleteUser: {
+        type: UserType,
+        args: {
+          id: {type: new GraphQLNonNull(GraphQLString)}
+        },
+        resolve(parentValue, args){
+          return deleteUser(args.id);
+        }
+      },
+      updateUser: {
+        type: UserType,
+        args: {
+          id: {type: new GraphQLNonNull(GraphQLString)},
+          firstName: {type: GraphQLString},
+          age: {type: GraphQLInt},
+          companyId: {type: GraphQLString}
+        },
+        resolve(parentValue, args){
+          return updateUser(args);
         }
       }
     }
