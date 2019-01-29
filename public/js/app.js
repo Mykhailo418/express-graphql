@@ -1,14 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
-//import store from './redux/store';
+import store from './redux/store';
 import Root from './components/Root';
 
-// render(
-// 	<Root store={store} />,
-// 	document.getElementById('container')
-// );
-
 render(
-	<Root />,
+	<Root store={store} />,
 	document.getElementById('container')
 );
