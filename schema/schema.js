@@ -1,5 +1,6 @@
 const graphql = require('graphql');
-const {getUserById, getCompanyById, getAllUsersOfCompany, addUser, deleteUser, updateUser} = require('../db/db_connection');
+const {getUserById, getCompanyById, getAllUsersOfCompany, addUser, deleteUser, updateUser,
+getAllUsers} = require('../db/db_connection');
 const {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLNonNull} = graphql;
 
 const CompanyType  = new GraphQLObjectType({
@@ -19,6 +20,7 @@ const CompanyType  = new GraphQLObjectType({
 const UserType = new GraphQLObjectType({
   name: 'User',
   fields: {
+    _id: {type: GraphQLString},
     id: {type: GraphQLString},
     firstName: {type: GraphQLString},
     age: {type: GraphQLInt},
@@ -39,6 +41,13 @@ const RootQuery = new GraphQLObjectType({
         args: { id: {type: GraphQLString} },
         resolve(parentValue, args){
             return getUserById(args.id);
+        }
+      },
+      users: {
+        type:  new GraphQLList(UserType),
+        args: {  },
+        resolve(parentValue, args){
+            return getAllUsers();
         }
       },
       company: {

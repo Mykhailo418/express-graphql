@@ -21,6 +21,11 @@ module.exports.getAllUsersOfCompany = function(companyId){
 	return users.find({companyId}, {});
 }
 
+module.exports.getAllUsers = function(){
+	let users = db.get('users');
+	return users.find({}, {});
+}
+
 module.exports.addUser = function(user){
 	const users = db.get('users');
 	return users.insert({id: Date.now().toString(), ...user});
