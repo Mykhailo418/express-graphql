@@ -71452,6 +71452,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _routes_UsersPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./routes/UsersPage */ "./public/js/components/routes/UsersPage.js");
+/* harmony import */ var _routes_NewUserPage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./routes/NewUserPage */ "./public/js/components/routes/NewUserPage.js");
+
 
 
 
@@ -71489,9 +71491,18 @@ function (_Component) {
         to: '/users',
         activeClassName: "active",
         className: "nav-link"
-      }, "Users"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+      }, "Users")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["NavLink"], {
+        to: '/create',
+        activeClassName: "active",
+        className: "nav-link"
+      }, "Create User"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
         path: "/users",
         component: _routes_UsersPage__WEBPACK_IMPORTED_MODULE_9__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+        path: "/create",
+        component: _routes_NewUserPage__WEBPACK_IMPORTED_MODULE_10__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Redirect"], {
         to: "/users"
       })));
@@ -71582,6 +71593,162 @@ _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default()(Roo
 
 /***/ }),
 
+/***/ "./public/js/components/routes/NewUserPage.js":
+/*!****************************************************!*\
+  !*** ./public/js/components/routes/NewUserPage.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _queries_companies__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../queries/companies */ "./public/js/queries/companies.js");
+/* harmony import */ var _queries_users__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../queries/users */ "./public/js/queries/users.js");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.esm.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var NewUserComponent =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(NewUserComponent, _Component);
+
+  function NewUserComponent() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, NewUserComponent);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(NewUserComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "state", {
+      firstName: '',
+      age: 0,
+      companyId: ""
+    });
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "onChangeField", function (field) {
+      return function (event) {
+        _this.setState(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()({}, field, event.target.value));
+      };
+    });
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "outpurCompaniesList", function () {
+      var companies = _this.props.data.companies;
+      if (!companies) return [];
+      return companies.map(function (company) {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("option", {
+          key: company._id,
+          value: company.id
+        }, company.name);
+      });
+    });
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "onSubmitForm", function (e) {
+      e.preventDefault();
+
+      _this.props.mutate({
+        variables: {
+          firstName: _this.state.firstName,
+          age: _this.state.age * 1,
+          companyId: _this.state.companyId.toString()
+        },
+        refetchQueries: [{
+          query: _queries_users__WEBPACK_IMPORTED_MODULE_10__["queryListUsers"]
+        }]
+      }).then(function (data) {
+        alert("User was added ".concat(data.data.addUser.id));
+
+        _this.props.history.push('/');
+      }).catch(function (e) {
+        alert('Error');
+        console.error(e);
+      });
+    });
+
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(NewUserComponent, [{
+    key: "render",
+    value: function render() {
+      //console.log(this.props);
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h1", null, "Add New User"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("form", {
+        className: "form",
+        onSubmit: this.onSubmitForm
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "First Name:"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+        type: "text",
+        value: this.state.firstName,
+        onChange: this.onChangeField('firstName'),
+        className: "form-control"
+      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Age:"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
+        type: "number",
+        value: this.state.age,
+        onChange: this.onChangeField('age'),
+        className: "form-control"
+      })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("label", null, "Company:"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("select", {
+        className: "form-control",
+        onChange: this.onChangeField('companyId'),
+        value: this.state.companyId
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("option", {
+        value: ""
+      }), this.outpurCompaniesList())), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary"
+      }, "Submit")));
+    }
+  }]);
+
+  return NewUserComponent;
+}(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
+
+_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(NewUserComponent, "propTypes", {});
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_11__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_10__["mutationNewUser"])(Object(react_apollo__WEBPACK_IMPORTED_MODULE_11__["graphql"])(_queries_companies__WEBPACK_IMPORTED_MODULE_9__["queryListCompanies"])(NewUserComponent)));
+
+/***/ }),
+
 /***/ "./public/js/components/routes/UsersPage.js":
 /*!**************************************************!*\
   !*** ./public/js/components/routes/UsersPage.js ***!
@@ -71622,24 +71789,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var deleteBtnStyle = {
+  display: 'inline-block',
+  marginLeft: '10px',
+  color: 'red',
+  cursor: 'pointer'
+};
 
-var CustomComponent =
+var UsersPageComponent =
 /*#__PURE__*/
 function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CustomComponent, _Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(UsersPageComponent, _Component);
 
-  function CustomComponent() {
+  function UsersPageComponent() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CustomComponent);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, UsersPageComponent);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CustomComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(UsersPageComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "outputData", function (_ref) {
+      var loading = _ref.loading,
+          users = _ref.users;
+      console.log('props', loading, users);
+      if (loading) return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "...loading");else if (!loading && (!users || !users.length)) return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "There are no users");
+      return _this.getUsersList(users);
+    });
 
     _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "getUsersList", function (users) {
       var data = users.map(function (user) {
@@ -71647,33 +71828,48 @@ function (_Component) {
           key: user._id
         }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
           href: "#".concat(user.id)
-        }, user.firstName));
+        }, user.firstName), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
+          style: deleteBtnStyle,
+          onClick: _this.deleteUser(user._id, user.firstName)
+        }, "X"));
       });
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("ul", null, data);
+    });
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "deleteUser", function (id, firstName) {
+      return function () {
+        _this.props.mutate({
+          variables: {
+            id: id
+          },
+          refetchQueries: [{
+            query: _queries_users__WEBPACK_IMPORTED_MODULE_9__["queryListUsers"]
+          }]
+        }).then(function (data) {
+          alert("User ".concat(firstName, " was deleted"));
+        }).catch(function (e) {
+          return alert('Error');
+        });
+      };
     });
 
     return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CustomComponent, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(UsersPageComponent, [{
     key: "render",
     value: function render() {
-      var _this$props$data = this.props.data,
-          loading = _this$props$data.loading,
-          users = _this$props$data.users;
-      console.log('props', loading, users);
-      var data;
-      if (loading) data = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "...loading");else if (!loading && (!users || !users.length)) data = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "There are no users");else data = this.getUsersList(users);
+      var data = this.outputData(this.props.data);
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h1", null, "Users"), data);
     }
   }]);
 
-  return CustomComponent;
+  return UsersPageComponent;
 }(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
-_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(CustomComponent, "propTypes", {});
+_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(UsersPageComponent, "propTypes", {});
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_9__["queryListUsers"])(CustomComponent));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_9__["deleteUser"])(Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_9__["queryListUsers"])(UsersPageComponent)));
 
 /***/ }),
 
@@ -71693,21 +71889,74 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./public/js/queries/users.js":
-/*!************************************!*\
-  !*** ./public/js/queries/users.js ***!
-  \************************************/
-/*! exports provided: queryListUsers */
+/***/ "./public/js/queries/companies.js":
+/*!****************************************!*\
+  !*** ./public/js/queries/companies.js ***!
+  \****************************************/
+/*! exports provided: queryListCompanies */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryListUsers", function() { return queryListUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryListCompanies", function() { return queryListCompanies; });
 /* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/taggedTemplateLiteral.js");
 /* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_1__);
 
+
+function _templateObject() {
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery{\n  companies{\n      _id,\n      id,\n      name\n  }\n}\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+var queryListCompanies = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
+
+/***/ }),
+
+/***/ "./public/js/queries/users.js":
+/*!************************************!*\
+  !*** ./public/js/queries/users.js ***!
+  \************************************/
+/*! exports provided: queryListUsers, mutationNewUser, deleteUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryListUsers", function() { return queryListUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutationNewUser", function() { return mutationNewUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
+/* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/taggedTemplateLiteral.js");
+/* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _templateObject3() {
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation DeleteUser($id: String!){\n  deleteUser(id: $id){\n    _id,\n    firstName\n  }\n}\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation AddUser($firstName: String!, $age: Int!, $companyId: String){\n  addUser(firstName: $firstName, age: $age, companyId: $companyId){\n      id\n  }\n}\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject() {
   var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery{\n  users{\n      _id,\n      id,\n      firstName\n  }\n}\n"]);
@@ -71721,6 +71970,8 @@ function _templateObject() {
 
 
 var queryListUsers = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
+var mutationNewUser = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject2());
+var deleteUser = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject3());
 
 /***/ }),
 

@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import UsersPage from './routes/UsersPage';
+import NewUserPage from './routes/NewUserPage';
 
 class App extends Component{
 	static propTypes = {
@@ -19,11 +20,17 @@ class App extends Component{
                       Users
                     </NavLink>
                   </li>
+									<li className="nav-item">
+										<NavLink to={'/create'} activeClassName="active" className="nav-link">
+											Create User
+										</NavLink>
+									</li>
               </Fragment>
             </ul>
         </nav>
 				<Switch>
 					<Route path="/users" component={UsersPage} />
+					<Route path="/create" component={NewUserPage} />
 					<Redirect to="/users" />
 				</Switch>
 			</div>

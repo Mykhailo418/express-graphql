@@ -1,11 +1,12 @@
 const graphql = require('graphql');
 const {getUserById, getCompanyById, getAllUsersOfCompany, addUser, deleteUser, updateUser,
-getAllUsers} = require('../db/db_connection');
+getAllUsers, getAllCompanies} = require('../db/db_connection');
 const {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLNonNull} = graphql;
 
 const CompanyType  = new GraphQLObjectType({
   name: 'Company',
   fields: () => ({
+    _id: {type: GraphQLString},
     id: {type: GraphQLString},
     name: {type: GraphQLString},
     description: {type: GraphQLString},
@@ -45,7 +46,7 @@ const RootQuery = new GraphQLObjectType({
       },
       users: {
         type:  new GraphQLList(UserType),
-        args: {  },
+        args: {},
         resolve(parentValue, args){
             return getAllUsers();
         }
@@ -55,6 +56,13 @@ const RootQuery = new GraphQLObjectType({
         args: { id: {type: GraphQLString} },
         resolve(parentValue, args){
             return getCompanyById(args.id);
+        }
+      },
+      companies: {
+        type:  new GraphQLList(CompanyType),
+        args: {},
+        resolve(parentValue, args){
+            return getAllCompanies();
         }
       }
     }

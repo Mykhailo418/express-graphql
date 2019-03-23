@@ -1,11 +1,6 @@
 var mongodb = require('mongodb');
 var db = require('monk')('localhost/graphql');
 
-module.exports.getAllUsers = function(){
-	let users = db.get('users');
-	users.find({}, {});
-}
-
 module.exports.getUserById = function(id){
 	let users = db.get('users');
 	return users.findOne({id}, {});
@@ -26,6 +21,11 @@ module.exports.getAllUsers = function(){
 	return users.find({}, {});
 }
 
+module.exports.getAllCompanies = function(){
+	let users = db.get('companies');
+	return users.find({}, {});
+}
+
 module.exports.addUser = function(user){
 	const users = db.get('users');
 	return users.insert({id: Date.now().toString(), ...user});
@@ -33,7 +33,7 @@ module.exports.addUser = function(user){
 
 module.exports.deleteUser = function(id){
 	let users = db.get('users');
-	return users.remove({id}, {multi: false});
+	return users.remove({_id: id}, {multi: false});
 }
 
 module.exports.updateUser = function(user){
