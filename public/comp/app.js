@@ -71841,11 +71841,10 @@ function (_Component) {
         _this.props.mutate({
           variables: {
             id: id
-          },
-          refetchQueries: [{
-            query: _queries_users__WEBPACK_IMPORTED_MODULE_9__["queryListUsers"]
-          }]
+          }
         }).then(function (data) {
+          _this.props.data.refetch();
+
           alert("User ".concat(firstName, " was deleted"));
         }).catch(function (e) {
           return alert('Error');

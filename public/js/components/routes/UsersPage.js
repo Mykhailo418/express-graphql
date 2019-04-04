@@ -47,10 +47,10 @@ class UsersPageComponent extends Component{
     deleteUser = (id, firstName) => () => {
       this.props.mutate({
         variables: {id},
-        refetchQueries: [{query: queryListUsers}]
       }).then((data) => {
+          this.props.data.refetch();
           alert(`User ${firstName} was deleted`);
-          
+
       }).catch((e) => alert('Error'));
     }
 }
