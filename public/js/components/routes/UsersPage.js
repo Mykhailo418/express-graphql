@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import {queryListUsers,deleteUser} from '../../queries/users';
 import {graphql} from 'react-apollo';
 
@@ -35,9 +36,9 @@ class UsersPageComponent extends Component{
     getUsersList = (users) => {
         const data = users.map((user) =>
           <li key={user._id}>
-            <a href={`#${user.id}`}>
+          <Link to={`/user/${user._id}`} >
               {user.firstName}
-            </a>
+            </Link>
             <span style={deleteBtnStyle} onClick={this.deleteUser(user._id, user.firstName)}>X</span>
           </li>
         );

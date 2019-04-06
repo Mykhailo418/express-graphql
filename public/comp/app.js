@@ -68136,7 +68136,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************************************!*\
   !*** ./node_modules/redux-saga/dist/redux-saga-core-npm-proxy.esm.js ***!
   \***********************************************************************/
-/*! exports provided: CANCEL, SAGA_LOCATION, buffers, detach, runSaga, END, isEnd, eventChannel, channel, multicastChannel, stdChannel, default */
+/*! exports provided: default, CANCEL, SAGA_LOCATION, buffers, detach, runSaga, END, isEnd, eventChannel, channel, multicastChannel, stdChannel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71453,6 +71453,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _routes_UsersPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./routes/UsersPage */ "./public/js/components/routes/UsersPage.js");
 /* harmony import */ var _routes_NewUserPage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./routes/NewUserPage */ "./public/js/components/routes/NewUserPage.js");
+/* harmony import */ var _routes_UserDetails__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./routes/UserDetails */ "./public/js/components/routes/UserDetails.js");
+
 
 
 
@@ -71503,6 +71505,9 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
         path: "/create",
         component: _routes_NewUserPage__WEBPACK_IMPORTED_MODULE_10__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+        path: "/user/:id",
+        component: _routes_UserDetails__WEBPACK_IMPORTED_MODULE_11__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Redirect"], {
         to: "/users"
       })));
@@ -71749,6 +71754,82 @@ _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(New
 
 /***/ }),
 
+/***/ "./public/js/components/routes/UserDetails.js":
+/*!****************************************************!*\
+  !*** ./public/js/components/routes/UserDetails.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _queries_users__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../queries/users */ "./public/js/queries/users.js");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.esm.js");
+
+
+
+
+
+
+
+
+
+
+
+var UserDetailsPageComponent =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(UserDetailsPageComponent, _Component);
+
+  function UserDetailsPageComponent() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, UserDetailsPageComponent);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(UserDetailsPageComponent).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(UserDetailsPageComponent, [{
+    key: "render",
+    value: function render() {
+      var data = this.props.data;
+      if (!data || !data.user) return 'Loading...';
+      var firstName = data.user.firstName;
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h1", null, firstName));
+    }
+  }]);
+
+  return UserDetailsPageComponent;
+}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+
+_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default()(UserDetailsPageComponent, "propTypes", {});
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_9__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_8__["getUser"], {
+  options: function options(props) {
+    return {
+      variables: {
+        id: props.match.params.id
+      }
+    };
+  }
+})(UserDetailsPageComponent));
+
+/***/ }),
+
 /***/ "./public/js/components/routes/UsersPage.js":
 /*!**************************************************!*\
   !*** ./public/js/components/routes/UsersPage.js ***!
@@ -71776,8 +71857,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _queries_users__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../queries/users */ "./public/js/queries/users.js");
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _queries_users__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../queries/users */ "./public/js/queries/users.js");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.esm.js");
+
 
 
 
@@ -71826,8 +71909,8 @@ function (_Component) {
       var data = users.map(function (user) {
         return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("li", {
           key: user._id
-        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
-          href: "#".concat(user.id)
+        }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
+          to: "/user/".concat(user._id)
         }, user.firstName), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
           style: deleteBtnStyle,
           onClick: _this.deleteUser(user._id, user.firstName)
@@ -71868,7 +71951,7 @@ function (_Component) {
 
 _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(UsersPageComponent, "propTypes", {});
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_9__["deleteUser"])(Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_9__["queryListUsers"])(UsersPageComponent)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_11__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_10__["deleteUser"])(Object(react_apollo__WEBPACK_IMPORTED_MODULE_11__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_10__["queryListUsers"])(UsersPageComponent)));
 
 /***/ }),
 
@@ -71923,7 +72006,7 @@ var queryListCompanies = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_tem
 /*!************************************!*\
   !*** ./public/js/queries/users.js ***!
   \************************************/
-/*! exports provided: queryListUsers, mutationNewUser, deleteUser */
+/*! exports provided: queryListUsers, mutationNewUser, deleteUser, getUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71931,11 +72014,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryListUsers", function() { return queryListUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutationNewUser", function() { return mutationNewUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUser", function() { return getUser; });
 /* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/taggedTemplateLiteral.js");
 /* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_1__);
 
+
+function _templateObject4() {
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery GetUser ($id: String!){\n  user(id: $id){\n    _id,\n    id,\n    firstName,\n    age\n  }\n}\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject3() {
   var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation DeleteUser($id: String!){\n  deleteUser(id: $id){\n    _id,\n    firstName\n  }\n}\n"]);
@@ -71971,6 +72065,7 @@ function _templateObject() {
 var queryListUsers = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
 var mutationNewUser = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject2());
 var deleteUser = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject3());
+var getUser = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject4());
 
 /***/ }),
 

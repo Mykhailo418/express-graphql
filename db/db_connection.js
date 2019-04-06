@@ -1,9 +1,9 @@
 var mongodb = require('mongodb');
 var db = require('monk')('localhost/graphql');
 
-module.exports.getUserById = function(id){
+module.exports.getUserById = function(_id){
 	let users = db.get('users');
-	return users.findOne({id}, {});
+	return users.findOne({_id}, {});
 }
 
 module.exports.getCompanyById = function(id){

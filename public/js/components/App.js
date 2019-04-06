@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import UsersPage from './routes/UsersPage';
 import NewUserPage from './routes/NewUserPage';
+import UserDetailsPage from './routes/UserDetails';
 
 class App extends Component{
 	static propTypes = {
@@ -31,6 +32,7 @@ class App extends Component{
 				<Switch>
 					<Route path="/users" component={UsersPage} />
 					<Route path="/create" component={NewUserPage} />
+					<Route path="/user/:id" component={UserDetailsPage} />
 					<Redirect to="/users" />
 				</Switch>
 			</div>

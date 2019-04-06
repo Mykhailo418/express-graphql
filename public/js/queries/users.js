@@ -26,3 +26,14 @@ mutation DeleteUser($id: String!){
   }
 }
 `;
+
+export const getUser = gql`
+query GetUser ($id: String!){
+  user(id: $id){
+    _id,
+    id,
+    firstName,
+    age
+  }
+}
+`;
