@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {getUser} from '../../queries/users';
 import {graphql} from 'react-apollo';
+import CompanyDetails from '../company/CompanyDetails';
 
 class UserDetailsPageComponent extends Component{
     static propTypes = {
@@ -11,10 +12,11 @@ class UserDetailsPageComponent extends Component{
     render(){
       const {data} = this.props;
       if(!data || !data.user) return 'Loading...';
-      const {firstName} = data.user;
+      const {firstName, company} = data.user;
       return (
         <Fragment>
           <h1>{firstName}</h1>
+          <CompanyDetails info={company} />
         </Fragment>
       );
     }

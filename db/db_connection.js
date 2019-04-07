@@ -31,6 +31,11 @@ module.exports.addUser = function(user){
 	return users.insert({id: Date.now().toString(), ...user});
 }
 
+module.exports.addCompany = function(company){
+	const companies = db.get('companies');
+	return companies.insert({id: Date.now().toString(), ...company});
+}
+
 module.exports.deleteUser = function(id){
 	let users = db.get('users');
 	return users.remove({_id: id}, {multi: false});

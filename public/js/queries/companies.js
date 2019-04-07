@@ -9,3 +9,11 @@ query{
   }
 }
 `;
+
+export const mutationAddCompany = gql`
+mutation AddCompany($name: String!, $description: String){
+  addCompany(name: $name, description: $description){
+      id
+  }
+}
+`;

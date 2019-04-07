@@ -33,7 +33,12 @@ query GetUser ($id: String!){
     _id,
     id,
     firstName,
-    age
+    age,
+    company{
+      id,
+      name,
+      description
+    }
   }
 }
 `;

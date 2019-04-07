@@ -4,6 +4,7 @@ import {Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import UsersPage from './routes/UsersPage';
 import NewUserPage from './routes/NewUserPage';
 import UserDetailsPage from './routes/UserDetails';
+import NewCompanyPage from './routes/NewCompany';
 
 class App extends Component{
 	static propTypes = {
@@ -26,12 +27,18 @@ class App extends Component{
 											Create User
 										</NavLink>
 									</li>
+									<li className="nav-item">
+										<NavLink to={'/addCompany'} activeClassName="active" className="nav-link">
+											Add Company
+										</NavLink>
+									</li>
               </Fragment>
             </ul>
         </nav>
 				<Switch>
 					<Route path="/users" component={UsersPage} />
 					<Route path="/create" component={NewUserPage} />
+					<Route path="/addCompany" component={NewCompanyPage} />
 					<Route path="/user/:id" component={UserDetailsPage} />
 					<Redirect to="/users" />
 				</Switch>
