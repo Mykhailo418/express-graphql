@@ -13,6 +13,7 @@ query{
 export const mutationNewUser = gql`
 mutation AddUser($firstName: String!, $age: Int!, $companyId: String){
   addUser(firstName: $firstName, age: $age, companyId: $companyId){
+      _id,
       id
   }
 }
@@ -35,6 +36,7 @@ query GetUser ($id: String!){
     firstName,
     age,
     company{
+      _id,
       id,
       name,
       description

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {mutationAddCompany} from '../../queries/companies';
+import {mutationAddCompany,queryListCompanies} from '../../queries/companies';
 import {graphql} from 'react-apollo';
 
 class NewCompanyComponent extends Component{
@@ -28,6 +28,9 @@ class NewCompanyComponent extends Component{
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
+          <hr />
+          <h3>Existed Companies:</h3>
+          {this.outputListOfCompanies()}
         </Fragment>
       );
     }
@@ -58,6 +61,13 @@ class NewCompanyComponent extends Component{
       });
     }
 
+    outputListOfCompanies = () => {
+      const {companies} = this.props.data;
+      if(!companies) return <p>There are no companies</p>;
+      const companiesList = companies.map((company) => <li key={company._id} >{company.name}</li>);
+      return <ul>{companiesList}</ul>;
+    }
+
 }
 
-export default graphql(mutationAddCompany)(NewCompanyComponent);
+export default graphql(mutationAddCompany)(graphql(queryListCompanies)(NewCompanyComponent));

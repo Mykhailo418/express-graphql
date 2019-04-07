@@ -71415,7 +71415,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var client = new apollo_client__WEBPACK_IMPORTED_MODULE_4__["ApolloClient"]({
   link: new apollo_link_http__WEBPACK_IMPORTED_MODULE_5__["HttpLink"](),
-  cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_6__["InMemoryCache"]()
+  cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_6__["InMemoryCache"]({
+    dataIdFromObject: function dataIdFromObject(o) {
+      return o._id;
+    }
+  })
 });
 Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_7__["ApolloProvider"], {
   client: client
@@ -71766,6 +71770,17 @@ function (_Component) {
       });
     });
 
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "outputListOfCompanies", function () {
+      var companies = _this.props.data.companies;
+      if (!companies) return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("p", null, "There are no companies");
+      var companiesList = companies.map(function (company) {
+        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("li", {
+          key: company._id
+        }, company.name);
+      });
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("ul", null, companiesList);
+    });
+
     return _this;
   }
 
@@ -71792,7 +71807,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "Submit")));
+      }, "Submit")), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h3", null, "Existed Companies:"), this.outputListOfCompanies());
     }
   }]);
 
@@ -71801,7 +71816,7 @@ function (_Component) {
 
 _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(NewCompanyComponent, "propTypes", {});
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_companies__WEBPACK_IMPORTED_MODULE_9__["mutationAddCompany"])(NewCompanyComponent));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_companies__WEBPACK_IMPORTED_MODULE_9__["mutationAddCompany"])(Object(react_apollo__WEBPACK_IMPORTED_MODULE_10__["graphql"])(_queries_companies__WEBPACK_IMPORTED_MODULE_9__["queryListCompanies"])(NewCompanyComponent)));
 
 /***/ }),
 
@@ -72202,7 +72217,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject2() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation AddCompany($name: String!, $description: String){\n  addCompany(name: $name, description: $description){\n      id\n  }\n}\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation AddCompany($name: String!, $description: String){\n  addCompany(name: $name, description: $description){\n      _id,\n      name,\n      description\n  }\n}\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -72212,7 +72227,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery{\n  companies{\n      _id,\n      id,\n      name\n  }\n}\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery{\n  companies{\n      _id,\n      id,\n      name,\n      description\n  }\n}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -72247,7 +72262,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject4() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery GetUser ($id: String!){\n  user(id: $id){\n    _id,\n    id,\n    firstName,\n    age,\n    company{\n      id,\n      name,\n      description\n    }\n  }\n}\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery GetUser ($id: String!){\n  user(id: $id){\n    _id,\n    id,\n    firstName,\n    age,\n    company{\n      _id,\n      id,\n      name,\n      description\n    }\n  }\n}\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -72267,7 +72282,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation AddUser($firstName: String!, $age: Int!, $companyId: String){\n  addUser(firstName: $firstName, age: $age, companyId: $companyId){\n      id\n  }\n}\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation AddUser($firstName: String!, $age: Int!, $companyId: String){\n  addUser(firstName: $firstName, age: $age, companyId: $companyId){\n      _id,\n      id\n  }\n}\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
