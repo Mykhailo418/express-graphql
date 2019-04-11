@@ -71662,7 +71662,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       var info = this.props.info;
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", null, "Company Information:"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Name:"), " ", info.name), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Description:"), " ", info.description)));
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", null, "Company Information:"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Name:"), " ", info.name), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Description:"), " ", info.description), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("strong", null, "Likes:"), " ", info.likes)));
     }
   }]);
 
@@ -71754,7 +71754,7 @@ function (_Component) {
           description: _this.state.description
         }
       }).then(function (data) {
-        alert("Company was added ".concat(data.data.addCompany.id));
+        alert("Company was added ".concat(data.data.addCompany._id));
 
         _this.clearForm();
       }).catch(function (e) {
@@ -71995,15 +71995,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _queries_users__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../queries/users */ "./public/js/queries/users.js");
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.esm.js");
-/* harmony import */ var _company_CompanyDetails__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../company/CompanyDetails */ "./public/js/components/company/CompanyDetails.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _queries_users__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../queries/users */ "./public/js/queries/users.js");
+/* harmony import */ var _queries_companies__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../queries/companies */ "./public/js/queries/companies.js");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.esm.js");
+/* harmony import */ var _company_CompanyDetails__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../company/CompanyDetails */ "./public/js/components/company/CompanyDetails.js");
+
+
 
 
 
@@ -72022,9 +72027,45 @@ function (_Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(UserDetailsPageComponent, _Component);
 
   function UserDetailsPageComponent() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, UserDetailsPageComponent);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(UserDetailsPageComponent).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, (_getPrototypeOf2 = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(UserDetailsPageComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this)), "doLikeCompany", function (id, likes) {
+      return function (e) {
+        e.preventDefault();
+
+        _this.props.mutate({
+          variables: {
+            id: id
+          },
+          refetchQueries: [{
+            query: _queries_users__WEBPACK_IMPORTED_MODULE_9__["getUser"],
+            variables: {
+              id: _this.props.match.params.id
+            }
+          }],
+          optimisticResponse: {
+            __typename: 'Mutation',
+            likeCompany: {
+              __typename: 'CompanyType',
+              id: id,
+              likes: likes
+            }
+          }
+        });
+      };
+    });
+
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(UserDetailsPageComponent, [{
@@ -72035,18 +72076,22 @@ function (_Component) {
       var _data$user = data.user,
           firstName = _data$user.firstName,
           company = _data$user.company;
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h1", null, firstName), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_company_CompanyDetails__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      var likeBtn = company ? react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
+        href: "#like",
+        onClick: this.doLikeCompany(company.id, company.likes)
+      }, "\uD83D\uDC4D Like company") : null;
+      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_7__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h1", null, firstName), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_company_CompanyDetails__WEBPACK_IMPORTED_MODULE_12__["default"], {
         info: company
-      }));
+      }), likeBtn);
     }
   }]);
 
   return UserDetailsPageComponent;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
-_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default()(UserDetailsPageComponent, "propTypes", {});
+_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(UserDetailsPageComponent, "propTypes", {});
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_9__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_8__["getUser"], {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_apollo__WEBPACK_IMPORTED_MODULE_11__["graphql"])(_queries_companies__WEBPACK_IMPORTED_MODULE_10__["likeCopmpanyMutation"])(Object(react_apollo__WEBPACK_IMPORTED_MODULE_11__["graphql"])(_queries_users__WEBPACK_IMPORTED_MODULE_9__["getUser"], {
   options: function options(props) {
     return {
       variables: {
@@ -72054,7 +72099,7 @@ _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default()(Use
       }
     };
   }
-})(UserDetailsPageComponent));
+})(UserDetailsPageComponent)));
 
 /***/ }),
 
@@ -72203,18 +72248,29 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./public/js/queries/companies.js ***!
   \****************************************/
-/*! exports provided: queryListCompanies, mutationAddCompany */
+/*! exports provided: queryListCompanies, mutationAddCompany, likeCopmpanyMutation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryListCompanies", function() { return queryListCompanies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutationAddCompany", function() { return mutationAddCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "likeCopmpanyMutation", function() { return likeCopmpanyMutation; });
 /* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/taggedTemplateLiteral.js");
 /* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_1__);
 
+
+function _templateObject3() {
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation LikeCompany($id: String!){\n  likeCompany(id: $id){\n    id,\n    likes\n  }\n}\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject2() {
   var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nmutation AddCompany($name: String!, $description: String){\n  addCompany(name: $name, description: $description){\n      _id,\n      name,\n      description\n  }\n}\n"]);
@@ -72227,7 +72283,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery{\n  companies{\n      _id,\n      id,\n      name,\n      description\n  }\n}\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery{\n  companies{\n      _id,\n      id,\n      name,\n      description,\n      likes\n  }\n}\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -72239,6 +72295,7 @@ function _templateObject() {
 
 var queryListCompanies = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
 var mutationAddCompany = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject2());
+var likeCopmpanyMutation = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject3());
 
 /***/ }),
 
@@ -72262,7 +72319,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject4() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery GetUser ($id: String!){\n  user(id: $id){\n    _id,\n    id,\n    firstName,\n    age,\n    company{\n      _id,\n      id,\n      name,\n      description\n    }\n  }\n}\n"]);
+  var data = _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0___default()(["\nquery GetUser ($id: String!){\n  user(id: $id){\n    _id,\n    id,\n    firstName,\n    age,\n    company{\n      _id,\n      id,\n      name,\n      description,\n      likes\n    }\n  }\n}\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;

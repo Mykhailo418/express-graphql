@@ -48,7 +48,7 @@ class NewCompanyComponent extends Component{
         }
       })
       .then((data) => {
-        alert(`Company was added ${data.data.addCompany.id}`);
+        alert(`Company was added ${data.data.addCompany._id}`);
         this.clearForm();
       })
       .catch((e) => {alert('Error'); console.error(e)});

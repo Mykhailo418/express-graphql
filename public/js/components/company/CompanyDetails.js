@@ -14,6 +14,7 @@ class CompanyDetails extends Component{
           <ul>
             <li><strong>Name:</strong> {info.name}</li>
             <li><strong>Description:</strong> {info.description}</li>
+            <li><strong>Likes:</strong> {info.likes}</li>
           </ul>
         </Fragment>
       );

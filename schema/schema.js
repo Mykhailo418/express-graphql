@@ -1,6 +1,6 @@
 const graphql = require('graphql');
 const {getUserById, getCompanyById, getAllUsersOfCompany, addUser, deleteUser, updateUser,
-getAllUsers, getAllCompanies, addCompany} = require('../db/db_connection');
+getAllUsers, getAllCompanies, addCompany,likeCompany} = require('../db/db_connection');
 const {GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLNonNull} = graphql;
 
 const CompanyType  = new GraphQLObjectType({
@@ -10,6 +10,7 @@ const CompanyType  = new GraphQLObjectType({
     id: {type: GraphQLString},
     name: {type: GraphQLString},
     description: {type: GraphQLString},
+    likes: {type: GraphQLInt},
     users: {
       type: new GraphQLList(UserType),
       resolve(parentValue, args){
@@ -111,6 +112,15 @@ const mutation  = new GraphQLObjectType({
         },
         resolve(parentValue, {name, description}){
           return addCompany({name, description});
+        }
+      },
+      likeCompany: {
+        type: CompanyType,
+        args: {
+          id: {type: new GraphQLNonNull(GraphQLString)},
+        },
+        resolve(parentValue, {id}){
+          return likeCompany(id);
         }
       },
     }

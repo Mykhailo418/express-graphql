@@ -33,7 +33,16 @@ module.exports.addUser = function(user){
 
 module.exports.addCompany = function(company){
 	const companies = db.get('companies');
-	return companies.insert({id: Date.now().toString(), ...company});
+	return companies.insert({id: Date.now().toString(), ...company, likes: 0});
+}
+
+module.exports.likeCompany = function(id){
+	const companies = db.get('companies');
+	return companies.findOne({id: id}, {}).then((company) => {
+		const data = {...company, likes: company.likes + 1};
+		companies.update({id: id}, {$set: data});
+		return data;
+	});
 }
 
 module.exports.deleteUser = function(id){

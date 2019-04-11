@@ -39,7 +39,8 @@ query GetUser ($id: String!){
       _id,
       id,
       name,
-      description
+      description,
+      likes
     }
   }
 }

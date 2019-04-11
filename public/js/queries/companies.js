@@ -6,7 +6,8 @@ query{
       _id,
       id,
       name,
-      description
+      description,
+      likes
   }
 }
 `;
@@ -17,6 +18,15 @@ mutation AddCompany($name: String!, $description: String){
       _id,
       name,
       description
+  }
+}
+`;
+
+export const likeCopmpanyMutation = gql`
+mutation LikeCompany($id: String!){
+  likeCompany(id: $id){
+    id,
+    likes
   }
 }
 `;
